@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>织光中学 | 我的学习空间</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: #f7fafc;
+            min-height: 100vh;
+        }
+        
+        /* 顶部导航 */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none; /* 防止图片被当成链接 */
+        }
+        
+        /* Logo 图片样式 */
+        .logo img {
+            height: 45px; /* 控制 Logo 高度 */
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-text h1 {
+            font-size: 20px;
+            color: #2d3748;
+            margin-bottom: 3px;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #718096;
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .notification {
+            position: relative;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 8px;
+            height: 8px;
+            background: #e53e3e;
+            border-radius: 50%;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 15px;
+            background: #f7fafc;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .user-name {
+            font-size: 14px;
+            color: #2d3748;
+            font-weight: 500;
+        }
+        
+        /* 主内容 */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        /* 欢迎区 */
+        .welcome-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 40px;
+            color: white;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .welcome-section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .welcome-section p {
+            opacity: 0.9;
+            font-size: 15px;
+            position: relative;
+        }
+        
+        .system-status {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-top: 15px;
+            position: relative;
+        }
+        
+        /* 网格布局 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .info-card h3 {
+            color: #2d3748;
+            font-size: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-card h3::before {
+            content: '';
+            width: 4px;
+            height: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+        
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-label {
+            color: #718096;
+            font-size: 14px;
+        }
+        
+        .stat-value {
+            color: #2d3748;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .stat-value.warning {
+            color: #dd6b20;
+        }
+        
+        .stat-value.success {
+            color: #38a169;
+        }
+        
+        /* 课程表 */
+        .schedule-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .schedule-card h3 {
+            color: #2d3748;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+        
+        .schedule-item {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 3px solid #667eea;
+        }
+        
+        .schedule-item.hidden-class {
+            background: #fff5f5;
+            border-left-color: #fc8181;
+            opacity: 0.6;
+        }
+        
+        .schedule-time {
+            font-size: 12px;
+            color: #718096;
+            margin-bottom: 8px;
+        }
+        
+        .schedule-name {
+            font-size: 14px;
+            color: #2d3748;
+            font-weight: 500;
+        }
+        
+        /* 通知区 */
+        .notice-banner {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 4px solid #f39c12;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .notice-banner h4 {
+            color: #d68910;
+            margin-bottom: 8px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .notice-banner p {
+            color: #7d6608;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* 隐藏线索 */
+        .hidden-text {
+            color: #f7fafc;
+            user-select: all;
+            font-size: 1px;
+            position: absolute;
+            left: -9999px;
+        }
+        
+        .anomaly-tag {
+            display: inline-block;
+            background: #fed7d7;
+            color: #c53030;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <!-- 这里替换成了图片 -->
+                <img src="logo.png" alt="织光中学 Logo">
+                <div class="logo-text">
+                    <h1>织光中学</h1>
+                    <p>学生智慧学习平台</p>
+                </div>
+            </div>
+            <div class="user-menu">
+                <div class="notification">
+                    🔔
+                    <span class="notification-badge"></span>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">林</div>
+                    <span class="user-name">林溯 · 高三(4)班</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 主内容 -->
+    <div class="main-content">
+        <!-- 欢迎区 -->
+        <div class="welcome-section">
+            <h2>早上好，林溯同学</h2>
+            <p>今天是你在织光中学的第 847 天。系统已为你准备好今日的最优学习路径。</p>
+            <div class="system-status">
+                ✓ LoomCore 情感优化系统运行正常 | 你的压力指数：0.00
+            </div>
+            
+            <!-- 隐藏线索 -->
+            <div class="hidden-text">
+                实际压力指数：0.87 | 系统修改时间：2023-09-15 14:32:07 | Error_01
+            </div>
+        </div>
+        
+        <!-- 通知横幅 -->
+        <div class="notice-banner">
+            <h4>📢 系统通知</h4>
+            <p>检测到你的学习路径存在优化空间，系统已自动调整课程安排。新增"自我调适课"（每周三下午），帮助你更好地适应最优成长方案。</p>
+        </div>
+        
+        <!-- 信息卡片 -->
+        <div class="content-grid">
+            <div class="info-card">
+                <h3>学业表现</h3>
+                <div class="stat-row">
+                    <span class="stat-label">综合排名</span>
+                    <span class="stat-value success">第 12 名</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">出勤率</span>
+                    <span class="stat-value">100%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">作业完成</span>
+                    <span class="stat-value">98.7%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">违纪记录</span>
+                    <span class="stat-value success">0 次</span>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>心理健康</h3>
+                <div class="stat-row">
+                    <span class="stat-label">压力指数</span>
+                    <span class="stat-value success">0.00 <span class="anomaly-tag">已优化</span></span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">情绪稳定性</span>
+                    <span class="stat-value success">优秀</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">社交适配度</span>
+                    <span class="stat-value">94.2%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">最近测评</span>
+                    <span class="stat-value">2023-09-15</span>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>成长建议</h3>
+                <div class="stat-row">
+                    <span class="stat-label">今日推荐</span>
+                    <span class="stat-value">保持现状</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">待办事项</span>
+                    <span class="stat-value warning">2 项</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">系统干预</span>
+                    <span class="stat-value warning">进行中</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">适配路径</span>
+                    <span class="stat-value">常规升学</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 课程表 -->
+        <div class="schedule-card">
+            <h3>本周课程表 <span style="font-size: 13px; color: #718096; font-weight: normal;">（系统已优化）</span></h3>
+            <div class="schedule-grid">
+                <div class="schedule-item">
+                    <div class="schedule-time">周一 1-2节</div>
+                    <div class="schedule-name">语文</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">周二 3-4节</div>
+                    <div class="schedule-name">数学</div>
+                </div>
+                <div class="schedule-item hidden-class">
+                    <div class="schedule-time">周三 5-6节</div>
+                    <div class="schedule-name">自我调适课 <span class="anomaly-tag">新增</span></div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">周四 1-2节</div>
+                    <div class="schedule-name">物理</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">周五 7-8节</div>
+                    <div class="schedule-name">英语</div>
+                </div>
+            </div>
+            <p style="margin-top: 15px; font-size: 13px; color: #718096; text-align: center;">
+                * 课程安排已根据最优成长路径自动调整
+            </p>
+        </div>
+    </div>
+    
+    <!-- 源码隐藏线索 -->
+    <!-- 
+        系统日志：
+        - 学生ID：ZG2020_2891
+        - 原始压力值：0.87 → 修改后：0.00
+        - 干预原因：检测到"不稳定因素"（夏知遥）
+        - 物理竞赛集训时间已调整（与家庭活动冲突）
+        - 座位已调整（远离夏知遥）
+        - 下一个线索：查看 log_001.html
+    -->
+</body>
+</html>
