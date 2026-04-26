@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>织光中学 | 智慧教育平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 顶部导航 */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+        
+        .logo p {
+            font-size: 12px;
+            opacity: 0.9;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+        }
+        
+        /* 主内容区 */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+        
+        .welcome-card {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            max-width: 700px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .welcome-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 40px;
+        }
+        
+        .welcome-card h2 {
+            color: #2d3748;
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .welcome-card .subtitle {
+            color: #718096;
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+            padding: 30px 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .stat-item h3 {
+            color: #667eea;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-item p {
+            color: #718096;
+            font-size: 14px;
+        }
+        
+        .enter-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+        }
+        
+        .enter-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* 底部 */
+        .footer {
+            background: #2d3748;
+            color: #a0aec0;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        /* 隐藏线索 */
+        .hidden-text {
+            color: #ffffff;
+            user-select: all;
+            font-size: 1px;
+            position: absolute;
+            left: -9999px;
+        }
+        
+        .system-notice {
+            background: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 15px 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+            text-align: left;
+        }
+        
+        .system-notice strong {
+            color: #c05621;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .system-notice p {
+            color: #744210;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>织光中学</h1>
+                <p>ZHI GUANG ACADEMY · 以光引路 以智成材</p>
+            </div>
+            <div class="nav-links">
+                <a href="#">首页</a>
+                <a href="#">智慧教育</a>
+                <a href="#">学生档案</a>
+                <a href="#">联系我们</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 主内容 -->
+    <div class="main-content">
+        <div class="welcome-card">
+            <div class="welcome-icon">🏫</div>
+            <h2>智慧教育平台</h2>
+            <p class="subtitle">
+                欢迎使用织光中学LoomCore智慧教育系统<br>
+                我们致力于为每一位学生提供最优质的成长路径
+            </p>
+            
+            <div class="system-notice">
+                <strong>📢 系统通知</strong>
+                <p>2023年秋季学期情感优化模块已上线，系统将自动为学生匹配最优成长方案。</p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>升学率</p>
+                </div>
+                <div class="stat-item">
+                    <h3>0</h3>
+                    <p>心理危机事件</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5年</h3>
+                    <p>全省第一</p>
+                </div>
+            </div>
+            
+            <a href="log_001.html" class="enter-button">进入系统</a>
+            
+            <!-- 隐藏线索1：选中可见 -->
+            <div class="hidden-text">
+                系统版本：LoomCore_v3.2 | 异常学生数量：17 | 最后干预时间：2023-09-15 | 错误代码：Error_01
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部 -->
+    <div class="footer">
+        <p>&copy; 2026 织光中学 版权所有 | 隐私政策 | 用户协议</p>
+        <p style="margin-top: 10px; font-size: 12px;">
+            <!-- 隐藏线索2：源码注释 -->
+            <!-- 管理员入口：/admin/login?token=zhiguang_med_2024 -->
+            <!-- 下一个线索在GitHub Commits记录中 -->
+            技术支持：LoomCore智慧教育系统 | 数据已加密保护
+        </p>
+    </div>
+</body>
+</html>
